@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
-import Table from "../components/Table";
+import Button from "../components/Button";
 import Header from "../components/Header";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    const [books, setBooks] = useState([]);
+
+    const [algoProblem, setAlgoProblem] = useState('');
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/books")
+        axios.get("https://leetcode.com/graphql")
             .then((res) => {
                 console.log(res.data);
-                setBooks(res.data);
+                setAlgoProblem(res.data); // need to change this dynamically 
             })
             .catch((err) => {
                 console.log(err);
@@ -18,8 +20,13 @@ const Home = () => {
     }, [])
 
     return (<>
-    <Header page="Full Catalog"/>
-    <Table books={books}/>
+        <Header />
+        <div>
+            <h1>Choose your Algorithm!</h1>
+            <Link to="/algos">
+                <Button>Start your Challenge!</Button>
+            </Link>
+        </div>
     </>)
 }
 

@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 
-const Header = ({ page }) => {
+const Header = () => {
     return (
-        <fieldset>
-            <legend>Header</legend>
-            <Link to="/">Catalog</Link> |
-            <Link to="/create">Add Book</Link> |
-            <span>{page}</span>
-        </fieldset>
+        <div>
+            <Link to="/home">Home Page</Link> |
+            <Link to="/profile">Profile</Link> |
+            
+        </div>
     );
 };
 
